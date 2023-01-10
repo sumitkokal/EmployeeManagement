@@ -13,5 +13,7 @@ namespace EmployeeManagement.Context
         public DbSet<EmployeeModel> employees { get; set; }
         public DbSet<RoleModel> roles { get; set; }
         public DbSet<ConsultantModel> consultants { get; set; }
+
+      
     }
 }

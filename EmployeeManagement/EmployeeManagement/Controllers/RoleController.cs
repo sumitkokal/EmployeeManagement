@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmpManagement.Models;
 using EmployeeManagement.Context;
+using EmployeeManagement.CustomSessions;
 
 namespace EmployeeManagement.Controllers
 {
@@ -154,6 +155,26 @@ namespace EmployeeManagement.Controllers
         {
             var empList = (await _context.employees.ToListAsync());
             var roleList = (await _context.roles.ToListAsync());
+
+            var RoleSelect = new List<SelectListItem>();
+            foreach (var item in roleList)
+            {
+                RoleSelect.Add(new SelectListItem(item.RoleName, item.RoleId.ToString()));
+            }
+            ViewBag.RoleList = null;
+            HttpContext.Session.SetSessionObject<List<SelectListItem>>("RoleList", RoleSelect);
+            ViewBag.RoleList = RoleSelect;
+
+            var EmployeeSelect = new List<SelectListItem>();
+            foreach (var item in empList)
+            {
+                EmployeeSelect.Add(new SelectListItem(item.FirstName + " " + item.LastName, item.EmployeeId.ToString()));
+            }
+            ViewBag.EmployeeList = null;
+            HttpContext.Session.SetSessionObject<List<SelectListItem>>("EmployeeList", RoleSelect);
+            ViewBag.EmployeeList = EmployeeSelect;
+
+
             return View();
         }
     }

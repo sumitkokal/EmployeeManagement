@@ -25,7 +25,15 @@ namespace EmployeeManagement.Controllers
         // GET: Employee
         public async Task<IActionResult> Index()
         {
-            return View(await _context.employees.ToListAsync());
+            var result = await _context.employees.ToListAsync();
+           
+            //var roleData = _context.roles.ToList();
+            //foreach (var item in result)
+            //{
+            //    var bindRoleName = roleData.Find(c => c.RoleId == item.Role);
+            //    item.RoleName = bindRoleName.RoleName;
+            //}
+            return View(result);
         }
 
 
@@ -98,15 +106,45 @@ namespace EmployeeManagement.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId,EmployeeCode,FirstName,LastName,EmailId,DepartmentId,Role,Designation,ReportingManager,DateOfBirth,Gender,Qualification,Stream,TotalExperiance,PositionType,TotalLeaveProvide,WeeklyOff,PrivilegeLeave,CasualLeave,MobileNo,BankName,IFSCCode")] EmployeeModel employeeModel)
+        public async Task<IActionResult>
+            Create([Bind("EmployeeId,EmployeeCode,FirstName,LastName,EmailId,Role,ReportingManager,DateOfBirth,Gender,Qualification,TotalExperiance,TotalLeaveProvide,WeeklyOff,PrivilegeLeave,CasualLeave,MobileNo,BankName,IFSCCode")] EmployeeModel employeeModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(employeeModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                QualificationList qualifications = new QualificationList();
+                WeeklyOffList weeklyOffs = new WeeklyOffList();
+                ViewBag.QualificationList = QualificationList.qualifications;
+                ViewBag.WeeklyoffList = WeeklyOffList.weeklyoffs;
+                ViewBag.ManagerList = HttpContext.Session.GetCLRObject<List<SelectListItem>>("ManagerList");
+                ViewBag.RoleList = HttpContext.Session.GetCLRObject<List<SelectListItem>>("RoleList");
+                if (ModelState.IsValid)
+                {
+                    _context.Add(employeeModel);
+                    await _context.SaveChangesAsync();
+
+
+                    var insertedNewEmp = (await _context.employees.ToListAsync())
+                        .Where(c => c.EmailId == employeeModel.EmailId && c.MobileNo == employeeModel.MobileNo).ToList()[0];
+
+                    // EmployeeModel emp = new EmployeeModel();
+                    employeeModel.EmployeeCode = "NE00" + insertedNewEmp.EmployeeId.ToString();
+                    employeeModel.EmployeeId = Convert.ToInt32(insertedNewEmp.EmployeeId);
+                    _context.Update(employeeModel);
+                    await _context.SaveChangesAsync();
+
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    throw new Exception("Something went wrong");
+                }
             }
-            return View(employeeModel);
+            catch (Exception e)
+            {
+                //throw new Exception(e.Message);
+                return View(employeeModel);
+            }
+            //return View(employeeModel);
         }
 
         // GET: Employee/Edit/5

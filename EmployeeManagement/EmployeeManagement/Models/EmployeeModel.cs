@@ -12,7 +12,7 @@ namespace EmpManagement.Models
         public int EmployeeId { get; set; }
 
         [Display(Name = "Emp Code")]
-        [Required(ErrorMessage = "Employee code is required")]
+        //[Required(ErrorMessage = "Employee code is required")]
         public string EmployeeCode { get; set; }
 
         [Display(Name = "First Name")]
@@ -27,10 +27,11 @@ namespace EmpManagement.Models
         [DataType(DataType.EmailAddress)]
         public string EmailId { get; set; }
 
-        [Required(ErrorMessage = "Department is required")]
-        public int DepartmentId { get; set; }
-
-        public int Role { get; set; }
+        // [Required(ErrorMessage = "Department is required")]
+        //public int DepartmentId { get; set; }
+        
+        public int  Role { get; set; }
+        public RoleModel role { get; set; }
 
         //  public string LastCompanyName { get; set; }
 
@@ -49,7 +50,7 @@ namespace EmpManagement.Models
 
         public string Qualification { get; set; }
 
-        public string Stream { get; set; }
+        // public string Stream { get; set; }
 
         // Column[TypeName = "char(2)"]
         // [RegularExpression(@"^[0-9]{2,2}$", ErrorMessage = "Must be two digits numbers"), StringLength(2)]
@@ -58,7 +59,7 @@ namespace EmpManagement.Models
         [Display(Name = "Date of Birth")]
         public int TotalExperiance { get; set; }
 
-        public string PositionType { get; set; }
+        //   public string PositionType { get; set; }
 
         // public string PersonelEmailId { get; set; }
 
@@ -83,6 +84,8 @@ namespace EmpManagement.Models
 
         [Required(ErrorMessage = "Mobile No is required")]
         [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Mobile No")]
+        [MaxLength(10, ErrorMessage = "10 digit number is required")]
         public string MobileNo { get; set; }
 
         //   public string AlternateMobileNo { get; set; }
