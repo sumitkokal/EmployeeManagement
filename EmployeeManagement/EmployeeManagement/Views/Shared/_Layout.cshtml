@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Employee Management</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light customheader border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">HRMS</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        @if (@User.Identity.Name == "admin@nitor.com")
+                        {
+                            <li class="dropdown menuStyl nav-item">
+                                <a href="#" class="text-white dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+
+                                    <li class="nav-item submenu">
+                                        <a class="nav-link text-white" asp-area="" asp-controller="Role" asp-action="Index">Role</a>
+                                    </li>
+                                    <li class="nav-item submenu">
+                                        <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="Index">Employee</a>
+                                    </li>
+                                    <li class="nav-item submenu">
+                                        <a class="nav-link text-white" asp-area="" asp-controller="Consultant" asp-action="Index">Consultant</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="Index">Employee</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Consultant" asp-action="Index">Consultant</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - HRMS
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+
+<style>
+    .menuStyl {
+        padding-top: 8px;
+        padding-left: 8px;
+    }
+
+    a:hover {
+        color: #0056b3;
+        text-decoration: auto !important;
+    }
+
+    .submenu:hover {
+        background: #e7e7e7;
+    }
+
+    .customheader {
+        background-color: #0D2137 !important;
+        color:white;
+    }
+</style>
