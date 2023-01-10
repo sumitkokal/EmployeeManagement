@@ -1,0 +1,29 @@
+﻿@model EmployeeManagement.Models.SalaryModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>Create Salary Process</h4>
+                </div>
+                <div class="col-sm-6 pt-1 text-right"><a class="text-right text-dark" asp-action="Index">X</a></div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label asp-for="EmployeeId" class="control-label"></label>
+                        <select class="form-control" asp-for="@Model.EmployeeId"
+                                asp-items="@ViewBag.EmployeeList"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
