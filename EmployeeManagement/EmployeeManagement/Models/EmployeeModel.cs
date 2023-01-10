@@ -31,7 +31,7 @@ namespace EmpManagement.Models
         //public int DepartmentId { get; set; }
         
         public int  Role { get; set; }
-        public RoleModel role { get; set; }
+      //  public RoleModel role { get; set; }
 
         //  public string LastCompanyName { get; set; }
 

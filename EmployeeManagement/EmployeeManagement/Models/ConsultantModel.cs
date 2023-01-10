@@ -12,7 +12,7 @@ namespace EmpManagement.Models
     {
         [Key]
         [Display(Name = "Consultant Id")]
-        public string ConsultantId { get; set; }
+        public int ConsultantId { get; set; }
 
         [Display(Name = "Consultant Name")]
         [Required(ErrorMessage = "Employee code is required")]

@@ -26,7 +26,7 @@ namespace EmployeeManagement.Controllers
         }
 
         // GET: Consultant/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int id)
         {
             if (id == null)
             {
@@ -86,7 +86,7 @@ namespace EmployeeManagement.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("ConsultantId,ConsultantName,Type,EmailId,MobileNo")] ConsultantModel consultantModel)
+        public async Task<IActionResult> Edit(int id, [Bind("ConsultantId,ConsultantName,Type,EmailId,MobileNo")] ConsultantModel consultantModel)
         {
             if (id != consultantModel.ConsultantId)
             {
@@ -117,7 +117,7 @@ namespace EmployeeManagement.Controllers
         }
 
         // GET: Consultant/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (id == null)
             {
@@ -145,7 +145,7 @@ namespace EmployeeManagement.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ConsultantModelExists(string id)
+        private bool ConsultantModelExists(int id)
         {
             return _context.consultants.Any(e => e.ConsultantId == id);
         }

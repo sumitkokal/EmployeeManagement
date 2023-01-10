@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,6 +15,12 @@ namespace EmpManagement.Models
         public int RoleId { get; set; }
         [Display(Name = "Role Name")]
         public string RoleName { get; set; }
-        public EmployeeModel EmployeeModel { get; set; }
+        public int EmployeeId { get; set; }
     }
+
+    public class RoleEdit
+    {
+        public IdentityRole Role { get; set; }
+        public IEnumerable<EmployeeModel> employeeModels { get; set; }
+     }
 }
