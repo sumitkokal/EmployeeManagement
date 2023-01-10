@@ -34,7 +34,9 @@ namespace EmployeeManagement.Controllers
             ViewBag.RoleList = null;
             HttpContext.Session.SetSessionObject<List<SelectListItem>>("EmployeeList", EmpSelect);
             ViewBag.EmployeeList = EmpSelect;
+
+
             return View();
-        }
+        }     
     }
 }

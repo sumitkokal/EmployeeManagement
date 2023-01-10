@@ -23,7 +23,23 @@
                                 asp-items="@ViewBag.EmployeeList"></select>
                     </div>
                 </div>
+                <div class="col-sm-4">
+                     
+                </div>
             </div>
+            @*@if (@Model.EmployeeId > 0)
+            {*@
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label asp-for="BasicPay" class="control-label"></label>
+                            <input autocomplete="off" placeholder="Basic Pay" asp-for="BasicPay" class="form-control" />
+                            <span asp-validation-for="BasicPay" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+           @* }*@
+
         </div>
     </div>
 </div>
