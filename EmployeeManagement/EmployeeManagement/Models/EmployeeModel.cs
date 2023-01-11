@@ -98,6 +98,8 @@ namespace EmpManagement.Models
         //public string BankAccountNO { get; set; }
         [Display(Name = "IFSC Code")]
         public string IFSCCode { get; set; }
+        [Display(Name = "Bank Account No")]
+        public string BankAccountNo { get; set; }
         //public string RequestResignationDate { get; set; }
         //public string ApprovedResignationDate { get; set; }
         //public string RequestRelievingDate { get; set; }
