@@ -9,7 +9,14 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-6">
-                    <h4>Create Employee </h4>
+                    @*@if (ViewBag.EmpView)
+                    {
+                        <h4>Employee Details</h4>
+                    }
+                    else
+                    {*@
+                        <h4>Create Employee </h4>
+                    @*}*@
                 </div>
                 <div class="col-sm-6 pt-1 text-right"><a class="text-right text-dark" asp-action="Index">X</a></div>
             </div>

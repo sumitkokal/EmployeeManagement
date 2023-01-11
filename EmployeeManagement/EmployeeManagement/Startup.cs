@@ -38,6 +38,7 @@ namespace EmployeeManagement
                 option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -61,7 +62,7 @@ namespace EmployeeManagement
             {
                 options.AddPolicy("ReadPolicy", policy =>
                 {
-                    policy.RequireRole("Admin", "Staff", "Manager", "Accoutant", "Consultant");
+                    policy.RequireRole("Admin", "Staff", "Manager", "Accountant", "Consultant");
                 });
 
                 options.AddPolicy("CreatePolicy", policy =>

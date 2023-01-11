@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using EmployeeManagement.CustomSessions;
 using System.Collections.Generic;
+using EmployeeManagement.Models;
 
 namespace EmployeeManagement.Controllers
 {
@@ -37,6 +38,26 @@ namespace EmployeeManagement.Controllers
 
 
             return View();
-        }     
+        }
+
+        public IActionResult Test(int EmployeeId)
+        {
+            SalaryModel salary = new SalaryModel()
+            {
+                BasicPay = 1000,
+                HRA = 100,
+                TA = 200,
+                OverTime = 500
+            };
+            ViewBag.EmployeeList = HttpContext.Session.GetCLRObject<List<SelectListItem>>("EmployeeList");
+            ////ViewBag.Profile_Id = new SelectList(data, "Id", "Name", salary.EmployeeId);
+            //var EmpSelect = new List<SelectListItem>();
+            //var t = ViewBag.EmployeeList;
+            ////  var text = data.Where(x => x.Selected).FirstOrDefault().Value;
+
+
+            //var emp = salary.EmployeeId;
+            return View("Create", salary);
+        }
     }
 }

@@ -25,15 +25,28 @@ namespace EmployeeManagement.Controllers
         // GET: Employee
         public async Task<IActionResult> Index()
         {
-            var result = await _context.employees.ToListAsync();
-           
+            if (User.IsInRole("Admin"))
+            {
+                var result = await _context.employees.ToListAsync();
+                //ViewBag.EmpView = true;
+                return View(result);
+            }
+            else
+            {
+                var findEmp = (await _context.employees.ToListAsync()).Where(c => c.EmailId == User.Identity.Name).ToList()[0];
+               // var role = (await _context.roles.ToListAsync()).Where(c => c.RoleId == findEmp.Role).ToList()[0];
+               // findEmp.Role = role.RoleName;
+            //    ViewBag.EmpView = true;
+                return View("Details", findEmp);
+            }
+
             //var roleData = _context.roles.ToList();
             //foreach (var item in result)
             //{
             //    var bindRoleName = roleData.Find(c => c.RoleId == item.Role);
             //    item.RoleName = bindRoleName.RoleName;
             //}
-            return View(result);
+
         }
 
 

@@ -181,3 +181,10 @@ D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeMa
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.csproj.AssemblyReference.cache
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Salary\Create.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Salary\Index.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Leave\Index.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Leave\Create.cshtml.g.cs
