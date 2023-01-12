@@ -16,14 +16,14 @@ namespace EmpManagement.Models
         public string EmployeeCode { get; set; }
 
         [Display(Name = "First Name")]
-        [Required(ErrorMessage = "FirstName is required")]
+       // [Required(ErrorMessage = "FirstName is required")]
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
-        [Required(ErrorMessage = "Last name is required")]
+      //  [Required(ErrorMessage = "Last name is required")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Email Id is required")]
+       // [Required(ErrorMessage = "Email Id is required")]
         [DataType(DataType.EmailAddress)]
         public string EmailId { get; set; }
 
@@ -38,7 +38,7 @@ namespace EmpManagement.Models
         public string Designation { get; set; }
 
         //public string DateOfJoining { get; set; }
-        [Display(Name = "Reporting Manager")]
+       // [Display(Name = "Reporting Manager")]
         public int ReportingManager { get; set; }
 
         //public string ReportingManager2 { get; set; }
@@ -82,7 +82,7 @@ namespace EmpManagement.Models
         [Display(Name = "Casual Leave")]
         public string CasualLeave { get; set; }
 
-        [Required(ErrorMessage = "Mobile No is required")]
+       // [Required(ErrorMessage = "Mobile No is required")]
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Mobile No")]
         [MaxLength(10, ErrorMessage = "10 digit number is required")]

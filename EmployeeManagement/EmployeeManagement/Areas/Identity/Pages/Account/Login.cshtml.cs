@@ -80,25 +80,45 @@ namespace EmployeeManagement.Areas.Identity.Pages.Account
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
+
+                var fetchUser = _userManager.Users.Where(u => u.Email == Input.Email).FirstOrDefault();
+
+                //   var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+               // await _userManager.GetRolesAsync();
+                var checkRoleIsAssigned = await _userManager.GetRolesAsync(fetchUser);
+                if (checkRoleIsAssigned.Count > 0)
                 {
-                    _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
-                }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-                }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToPage("./Lockout");
+                    //_logger.LogInformation("User logged in.");
+                    //return LocalRedirect(returnUrl);
+                    if (result.Succeeded)
+                    {
+                        _logger.LogInformation("User logged in.");
+                        return LocalRedirect(returnUrl);
+                    }
+                    if (result.RequiresTwoFactor)
+                    {
+                        return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
+                    }
+                    if (result.IsLockedOut)
+                    {
+                        _logger.LogWarning("User account locked out.");
+                        return RedirectToPage("./Lockout");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                        return Page();
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError("", "Role is not assigned,please contact HR or administrator");
+                    HttpContext.Session.Clear();
                     return Page();
                 }
+
+               
             }
 
             // If we got this far, something failed, redisplay form

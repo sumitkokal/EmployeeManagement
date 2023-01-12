@@ -10,16 +10,20 @@ using EmployeeManagement.Context;
 using EmployeeManagement.CustomSessions;
 using EmployeeManagement.Data;
 using EmployeeManagement.StaticDb;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmployeeManagement.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly EmployeeContext _context;
-
-        public EmployeeController(EmployeeContext context)
+        private RoleManager<IdentityRole> _roleManager;
+        public EmployeeController(EmployeeContext context, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
+            _roleManager = roleManager;
         }
 
         // GET: Employee
@@ -34,9 +38,9 @@ namespace EmployeeManagement.Controllers
             else
             {
                 var findEmp = (await _context.employees.ToListAsync()).Where(c => c.EmailId == User.Identity.Name).ToList()[0];
-               // var role = (await _context.roles.ToListAsync()).Where(c => c.RoleId == findEmp.Role).ToList()[0];
-               // findEmp.Role = role.RoleName;
-            //    ViewBag.EmpView = true;
+                // var role = (await _context.roles.ToListAsync()).Where(c => c.RoleId == findEmp.Role).ToList()[0];
+                // findEmp.Role = role.RoleName;
+                //    ViewBag.EmpView = true;
                 return View("Details", findEmp);
             }
 
@@ -73,11 +77,11 @@ namespace EmployeeManagement.Controllers
         public IActionResult Create()
         {
             // Get Role list
-            var roleData = _context.roles.ToList();
+            var roleData = (_roleManager.Roles.ToList());
             var RoleSelect = new List<SelectListItem>();
             foreach (var item in roleData)
             {
-                RoleSelect.Add(new SelectListItem(item.RoleName, item.RoleId.ToString()));
+                RoleSelect.Add(new SelectListItem(item.Name, item.Id.ToString()));
             }
             ViewBag.RoleList = null;
             HttpContext.Session.SetSessionObject<List<SelectListItem>>("RoleList", RoleSelect);

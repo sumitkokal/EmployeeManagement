@@ -1,26 +1,68 @@
-﻿using EmployeeManagement.Models;
+﻿using EmployeeManagement.Context;
+using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using EmployeeManagement.CustomSessions;
+using EmpManagement.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmployeeManagement.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly EmployeeContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, EmployeeContext context, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _logger = logger;
+            _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-             return View();
+            if (User.Identity.Name != null)
+            {
+                if (User.Identity.Name != "admin@nitor.com")
+                {
+                    // var findEmp = (await _context.employees.ToListAsync()).Where(c => c.EmailId == User.Identity.Name).ToList()[0];
+                    var findEmp = (await _signInManager.UserManager.Users.ToListAsync()).Find(c => c.Email == User.Identity.Name);
+                    var fetchUser = _userManager.Users.Where(u => u.Email == findEmp.Email).FirstOrDefault();
+                    var checkRoleIsAssigned = await _userManager.GetRolesAsync(fetchUser);
+                    if (checkRoleIsAssigned.Count > 0)
+                    {
+                        var loggedInEmp = (await _context.employees.ToListAsync()).Where(c => c.EmailId == findEmp.Email).ToList()[0];
+                        HttpContext.Session.SetSessionObject<EmployeeModel>("loginUser", loggedInEmp);
+                        return View();
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Role is not assigned,please contact HR or administrator");
+                        HttpContext.Session.Clear();
+                        await _signInManager.SignOutAsync();
+                        _logger.LogInformation("User logged out.");
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
         }
 
         public IActionResult Privacy()

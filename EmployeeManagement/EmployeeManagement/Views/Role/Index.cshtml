@@ -7,10 +7,16 @@
 <h1>Index</h1>
 
 <p class="text-right">
-    <a asp-action="Create">Create New</a> |  <a asp-action="AssignRole">Assign Role</a>
+    <a asp-action="Create">Create New</a> | <a asp-action="AssignRole">Assign Role</a>
 </p>
 <table class="table table-sm table-bordered table-bordered">
-    <tr><th>ID</th><th>Name</th><th>Users</th><th>Update</th><th>Delete</th></tr>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Users</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
     @foreach (var role in Model)
     {
         <tr>

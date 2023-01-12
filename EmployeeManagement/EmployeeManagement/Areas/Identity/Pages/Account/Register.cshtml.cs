@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using EmployeeManagement.Context;
+using EmpManagement.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -12,6 +14,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace EmployeeManagement.Areas.Identity.Pages.Account
@@ -23,17 +26,20 @@ namespace EmployeeManagement.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly EmployeeContext _context;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            EmployeeContext context,
+        IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _context = context;
         }
 
         [BindProperty]
@@ -45,6 +51,16 @@ namespace EmployeeManagement.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+
+            [DataType(DataType.PhoneNumber)]
+            [Display(Name = "Mobile No")]
+            [MaxLength(10, ErrorMessage = "10 digit number is required")]
+            public string MobileNo { get; set; }
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -78,28 +94,61 @@ namespace EmployeeManagement.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    EmployeeModel employeeModel = new EmployeeModel();
+                    employeeModel.EmailId = Input.Email;
+                    employeeModel.MobileNo = Input.MobileNo;
+                    employeeModel.FirstName = Input.FirstName;
+                    employeeModel.LastName = Input.LastName;
+                    _context.employees.Add(employeeModel);
+                    await _context.SaveChangesAsync();
                     _logger.LogInformation("User created a new account with password.");
 
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
-                        protocol: Request.Scheme);
+                    var insertedNewEmp = (await _context.employees.ToListAsync())
+                        .Where(c => c.EmailId == employeeModel.EmailId && c.MobileNo == employeeModel.MobileNo).ToList()[0];
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    // EmployeeModel emp = new EmployeeModel();
+                    employeeModel.EmployeeCode = "NE00" + insertedNewEmp.EmployeeId.ToString();
+                    employeeModel.EmployeeId = Convert.ToInt32(insertedNewEmp.EmployeeId);
+                    _context.Update(employeeModel);
+                    await _context.SaveChangesAsync();
 
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
-                    }
-                    else
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
-                    }
+
+                    return LocalRedirect(returnUrl);
+                    //var fetchUser = _userManager.Users.Where(u => u.Email == user.Email).FirstOrDefault();
+
+                    ////   var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+                    // var checkRoleIsAssigned = await _userManager.GetRolesAsync(fetchUser);
+                    //if (checkRoleIsAssigned.Count > 0)
+                    //{
+                    //    return LocalRedirect(returnUrl);
+                    //}
+                    //else
+                    //{
+                    //    ModelState.AddModelError("", "Role is not assigned.");
+                    //    return LocalRedirect(returnUrl);
+                    //}
+
+                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    //var callbackUrl = Url.Page(
+                    //    "/Account/ConfirmEmail",
+                    //    pageHandler: null,
+                    //    values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
+                    //    protocol: Request.Scheme);
+
+                    //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                    //if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                    //{
+                    //    return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                    //}
+                    //else
+                    //{
+                    //    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //    return LocalRedirect(returnUrl);
+                    //}
                 }
                 foreach (var error in result.Errors)
                 {

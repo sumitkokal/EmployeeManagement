@@ -8,14 +8,22 @@ using System.Threading.Tasks;
 
 namespace EmpManagement.Models
 {
-    [Table("RoleMaster")]
+    //[Table("RoleMaster")]
+    //public class RoleModel
+    //{
+    //    [Key]
+    //    public int RoleId { get; set; }
+    //    [Display(Name = "Role Name")]
+    //    public string RoleName { get; set; }
+    //    public int EmployeeId { get; set; }
+    //}
+
     public class RoleModel
     {
-        [Key]
-        public int RoleId { get; set; }
+        public string UserId { get; set; }
+        public string RoleId { get; set; }
         [Display(Name = "Role Name")]
         public string RoleName { get; set; }
-        public int EmployeeId { get; set; }
     }
 
     public class RoleEdit

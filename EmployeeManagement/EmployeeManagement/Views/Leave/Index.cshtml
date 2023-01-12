@@ -1,24 +1,59 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<EmployeeManagement.Models.LeaveModel>
 
 @{
     ViewData["Title"] = "Index";
 }
-<div class="container-fluid">
-    <div class="card">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-sm-6"><h4>Leaves</h4></div>
-                <div class="col-sm-6">
-                    <p class="pb-0 mb-0 text-right">
-                        <a asp-action="Create">Apply Leave</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
 
-        </div>
-    </div>
-</div>
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveDateFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveDateTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.EmployeeId)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveDateFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveDateTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LeaveId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LeaveId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LeaveId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
