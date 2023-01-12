@@ -1,0 +1,99 @@
+﻿@model IEnumerable<EmployeeManagement.Models.SalaryStructureModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-6"><h4>Salary Structure</h4></div>
+                <div class="col-sm-6">
+                    <p class="pb-0 mb-0 text-right">
+                        <a asp-action="Create">New</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EmployeeId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BasicPay)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HRA)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TA)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DA)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.OverTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.WeekendWorked)
+                        </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.GrossSalary)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.GrossAnnualSalary)
+                        </th>*@
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmployeeId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BasicPay)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HRA)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TA)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DA)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.OverTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.WeekendWorked)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GrossSalary)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.GrossAnnualSalary)
+                            </td>*@
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.SalaryStructureId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.SalaryStructureId">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.SalaryStructureId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+

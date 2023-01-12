@@ -30,7 +30,7 @@ namespace EmployeeManagement.Controllers
             {
                 if (User.Identity.Name != "admin@nitor.com")
                 {
-                    var loggedInUser = HttpContext.Session.GetCLRObject<EmployeeModel>("loginUser");
+                    var loggedInUser = HttpContext.Session.GetSessionObject<EmployeeModel>("loginUser");
 
                     var leavesByEmp = (await _context.leaves.ToArrayAsync()).Where(c => c.EmployeeId == loggedInUser.EmployeeId).ToList();
                     //   var await _context.leaves.ToListAsync()
@@ -38,13 +38,39 @@ namespace EmployeeManagement.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home");
+                    List<LeaveApproveModel> leaveApproveList = await GetLeaveForApprove();
+                    return View("LeaveApproveIndex", leaveApproveList);
                 }
             }
             else
             {
                 return RedirectToAction("Index", "Home");
-            }          
+            }
+        }
+
+        public async Task<List<LeaveApproveModel>> GetLeaveForApprove()
+        {
+            List<LeaveApproveModel> leaveApproveList = new List<LeaveApproveModel>();
+            var leavesByEmp = (await _context.leaves.ToArrayAsync()).ToList();
+            foreach (var item in leavesByEmp)
+            {
+                var emp = (await _context.employees.ToListAsync()).Where(c => c.EmployeeId == item.EmployeeId).ToList()[0];
+                leaveApproveList.Add(new LeaveApproveModel
+                {
+                    EmployeeId = item.EmployeeId,
+                    EmployeeName = emp.FirstName + " " + emp.LastName,
+                    LeaveId = item.LeaveId,
+                    LeaveType = item.LeaveType,
+                    LeaveDateFrom = item.LeaveDateFrom,
+                    LeaveDateTo = item.LeaveDateTo,
+                    Status = item.Status,
+                    Remark = item.Remark,
+                    ApproveRemark=item.ApproveRemark,
+                    LeaveApprovedDate=item.LeaveApprovedDate
+                });
+            }
+            HttpContext.Session.SetSessionObject<List<LeaveApproveModel>>("leaveApproveList", leaveApproveList);
+            return leaveApproveList;
         }
 
         // GET: Leave/Details/5
@@ -68,6 +94,8 @@ namespace EmployeeManagement.Controllers
         // GET: Leave/Create
         public IActionResult Create()
         {
+            var dateAndTime = DateTime.Now;
+            ViewBag.TodayDate = dateAndTime.Date;
             return View();
         }
 
@@ -76,10 +104,11 @@ namespace EmployeeManagement.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LeaveId,EmployeeId,LeaveType,LeaveDateFrom,LeaveDateTo,Remark")] LeaveModel leaveModel)
+        public async Task<IActionResult> Create([Bind("LeaveId,EmployeeId,LeaveType,LeaveDateFrom,LeaveDateTo,Status,Remark")] LeaveModel leaveModel)
         {
-            ViewBag.loginUser = HttpContext.Session.GetCLRObject<EmployeeModel>("loginUser");
+            ViewBag.loginUser = HttpContext.Session.GetSessionObject<EmployeeModel>("loginUser");
             leaveModel.EmployeeId = ViewBag.loginUser.EmployeeId;
+            leaveModel.Status = "New";
             if (ModelState.IsValid)
             {
                 _context.Add(leaveModel);
@@ -105,12 +134,62 @@ namespace EmployeeManagement.Controllers
             return View(leaveModel);
         }
 
+        public IActionResult LeaveApprove(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var data = HttpContext.Session.GetSessionObject<List<LeaveApproveModel>>("leaveApproveList");
+
+            var leaveModel = data.Where(c => c.LeaveId == id).FirstOrDefault();
+            if (leaveModel == null)
+            {
+                return NotFound();
+            }
+            return View("LeaveApprove", leaveModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LeaveApprove(int id, LeaveApproveModel leaveApprove)
+        {
+            if (leaveApprove.ApproveRemark != null)
+            {
+                var data = HttpContext.Session.GetSessionObject<List<LeaveApproveModel>>("leaveApproveList");
+
+                var tempLeave = data.Where(c => c.LeaveId == id).FirstOrDefault();
+
+                var dateAndTime = DateTime.Now;
+                var date = dateAndTime.Date;
+                LeaveModel leaveModel = new LeaveModel()
+                {
+                    LeaveApprovedDate = date,
+                    LeaveId = id,
+                    Status = "Approved",
+                    ApproveRemark = leaveApprove.ApproveRemark,
+                    LeaveDateFrom = tempLeave.LeaveDateFrom,
+                    LeaveDateTo = tempLeave.LeaveDateTo,
+                    Remark = tempLeave.Remark,
+                    EmployeeId = tempLeave.EmployeeId,
+                    LeaveType = tempLeave.LeaveType
+
+                };
+
+                _context.leaves.Update(leaveModel);
+                await _context.SaveChangesAsync();
+            }
+            List<LeaveApproveModel> leaveApproveList = await GetLeaveForApprove();
+            return View("LeaveApproveIndex", leaveApproveList);
+        }
+
+
         // POST: Leave/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LeaveId,EmployeeId,LeaveType,LeaveDateFrom,LeaveDateTo,Remark")] LeaveModel leaveModel)
+        public async Task<IActionResult> Edit(int id, [Bind("LeaveId,EmployeeId,LeaveType,LeaveDateFrom,LeaveDateTo,Status,Remark")] LeaveModel leaveModel)
         {
             if (id != leaveModel.LeaveId)
             {

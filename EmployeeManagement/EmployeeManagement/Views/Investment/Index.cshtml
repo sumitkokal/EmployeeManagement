@@ -1,0 +1,80 @@
+﻿@model IEnumerable<EmployeeManagement.Models.InvestmentModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-6"><h4>My Investment</h4></div>
+                <div class="col-sm-6">
+                    <p class="pb-0 mb-0 text-right">
+                        <a asp-action="Create">New</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.EmployeeId)
+                        </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.InvestmentType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.InvestmentName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Amount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StartDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EndDate)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.EmployeeId)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InvestmentType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InvestmentName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EndDate)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.InvestmentId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.InvestmentId">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.InvestmentId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+ 

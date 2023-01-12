@@ -5,8 +5,8 @@
 @{
     ViewData["Title"] = "Create";
 }
-<div class="container-fluid">
-    <form asp-action="Create">
+<form asp-action="Create">
+    <div class="container-fluid">
         <div class="card">
             <div class="card-header">
                 <div class="row">
@@ -39,7 +39,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label asp-for="LeaveDateTo" class="control-label"></label>
-                            <input autocomplete="off" placeholder="Select DateOfBirth" asp-format="{0:yyyy-MM-ddTHH:mm}" asp-for="LeaveDateTo" class="form-control" />
+                            <input min="@ViewBag.TodayDate" autocomplete="off" placeholder="Select DateOfBirth" asp-format="{0:yyyy-MM-ddTHH:mm}" asp-for="LeaveDateTo" class="form-control" />
                             <span asp-validation-for="LeaveDateTo" class="text-danger"></span>
                         </div>
                     </div>
@@ -58,5 +58,8 @@
                 </div>
             </div>
         </div>
-    </form>
-</div>
+    </div>
+</form>
+
+
+ 

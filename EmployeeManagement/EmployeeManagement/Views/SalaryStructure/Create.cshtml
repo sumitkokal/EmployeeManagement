@@ -1,0 +1,90 @@
+﻿@model EmployeeManagement.Models.SalaryStructureModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-6"><h4>Create Salary Structure</h4></div>
+                <div class="col-sm-6">
+                    <p class="pb-0 mb-0 text-right">
+                        <a asp-action="Index">X</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        @*<div class="form-group">
+                                <label asp-for="EmployeeId" class="control-label"></label>
+                                <input asp-for="EmployeeId" class="form-control" />
+                                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                            </div>*@
+                        <div class="form-group">
+                            <label asp-for="EmployeeId" class="control-label"></label>
+                            <select class="form-control" asp-for="@Model.EmployeeId"
+                                    asp-items="@ViewBag.EmployeeList"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="BasicPay" class="control-label"></label>
+                            <input asp-for="BasicPay" class="form-control" />
+                            <span asp-validation-for="BasicPay" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="HRA" class="control-label"></label>
+                            <input asp-for="HRA" class="form-control" />
+                            <span asp-validation-for="HRA" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TA" class="control-label"></label>
+                            <input asp-for="TA" class="form-control" />
+                            <span asp-validation-for="TA" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DA" class="control-label"></label>
+                            <input asp-for="DA" class="form-control" />
+                            <span asp-validation-for="DA" class="text-danger"></span>
+                        </div>
+                        @*<div class="form-group">
+                            <label asp-for="OverTime" class="control-label"></label>
+                            <input asp-for="OverTime" class="form-control" />
+                            <span asp-validation-for="OverTime" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="WeekendWorked" class="control-label"></label>
+                            <input asp-for="WeekendWorked" class="form-control" />
+                            <span asp-validation-for="WeekendWorked" class="text-danger"></span>
+                        </div>*@
+                        @*<div class="form-group">
+                            <label asp-for="GrossSalary" class="control-label"></label>
+                            <input asp-for="GrossSalary" class="form-control" />
+                            <span asp-validation-for="GrossSalary" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="GrossAnnualSalary" class="control-label"></label>
+                            <input asp-for="GrossAnnualSalary" class="form-control" />
+                            <span asp-validation-for="GrossAnnualSalary" class="text-danger"></span>
+                        </div>*@
+                        <div class="form-group">
+                            <input type="submit" value="Calculate Gross" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

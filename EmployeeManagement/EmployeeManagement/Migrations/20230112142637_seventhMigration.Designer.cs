@@ -4,14 +4,16 @@ using EmployeeManagement.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeManagement.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    partial class EmployeeContextModelSnapshot : ModelSnapshot
+    [Migration("20230112142637_seventhMigration")]
+    partial class seventhMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -146,6 +148,42 @@ namespace EmployeeManagement.Migrations
                     b.ToTable("InvestmentMaster");
                 });
 
+            modelBuilder.Entity("EmployeeManagement.Models.LeaveApproveModel", b =>
+                {
+                    b.Property<int>("LeaveId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApproveRemark")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmployeeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LeaveApprovedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LeaveDateFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LeaveDateTo")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LeaveType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LeaveId");
+
+                    b.ToTable("LeaveApproveModel");
+                });
+
             modelBuilder.Entity("EmployeeManagement.Models.LeaveModel", b =>
                 {
                     b.Property<int>("LeaveId")
@@ -159,7 +197,7 @@ namespace EmployeeManagement.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("LeaveApprovedDate")
+                    b.Property<DateTime>("LeaveApprovedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("LeaveDateFrom")

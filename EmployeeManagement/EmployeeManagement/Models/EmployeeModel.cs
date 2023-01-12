@@ -44,7 +44,7 @@ namespace EmpManagement.Models
         //public string ReportingManager2 { get; set; }
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         public string Gender { get; set; }
 
@@ -56,7 +56,7 @@ namespace EmpManagement.Models
         // [RegularExpression(@"^[0-9]{2,2}$", ErrorMessage = "Must be two digits numbers"), StringLength(2)]
         //  [Range(1, 2)]
 
-        [Display(Name = "Date of Birth")]
+        [Display(Name = "Total Experiance")]
         public int TotalExperiance { get; set; }
 
         //   public string PositionType { get; set; }

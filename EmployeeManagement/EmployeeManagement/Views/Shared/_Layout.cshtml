@@ -26,18 +26,26 @@
                         {
                             if (User.IsInRole("Admin"))
                             {
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="Index">Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Leave" asp-action="Index">Leaves</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Investment" asp-action="Index">Investments</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Salary" asp-action="Index">My Pay</a>
+                                </li>
                                 <li class="dropdown menuStyl nav-item">
                                     <a href="#" class="text-white dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-
                                         <li class="nav-item submenu">
                                             <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Role</a>
                                         </li>
                                         <li class="nav-item submenu">
                                             <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee</a>
-                                        </li>
-                                        <li class="nav-item submenu">
-                                            <a class="nav-link text-dark" asp-area="" asp-controller="Consultant" asp-action="Index">Consultant</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -45,24 +53,54 @@
                             if (User.IsInRole("Consultant"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Consultant" asp-action="Index">Consultant</a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Consultant" asp-action="Index">Profile</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Salary" asp-action="Index">My Pay</a>
+                                </li>
+
                             }
                             if (User.IsInRole("Accountant"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Salary" asp-action="Index">Salary</a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="Index">Profile</a>
                                 </li>
-                            }
-                            else
-                            {
                                 <li class="nav-item">
                                     <a class="nav-link text-white" asp-area="" asp-controller="Leave" asp-action="Index">Leaves</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="Index">Employee</a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Investment" asp-action="Index">Investments</a>
                                 </li>
-                            }                           
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Salary" asp-action="Index">My Pay</a>
+                                </li>
+                                <li class="dropdown menuStyl nav-item">
+                                    <a href="#" class="text-white dropdown-toggle" data-toggle="dropdown">Payroll<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item submenu">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="SalaryStructure" asp-action="Index">Salary Structure</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" asp-area="" asp-controller="Salary" asp-action="Index">Salary Process</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            if (User.IsInRole("Staff"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="Index">Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Leave" asp-action="Index">Leaves</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Investment" asp-action="Index">Investments</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Salary" asp-action="Index">My Pay</a>
+                                </li>
+                            }
                         }
                     </ul>
                 </div>

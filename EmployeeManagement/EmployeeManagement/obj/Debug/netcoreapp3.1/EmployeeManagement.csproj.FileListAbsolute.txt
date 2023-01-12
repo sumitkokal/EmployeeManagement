@@ -1,3 +1,4 @@
+D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.resources.dll
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\appsettings.json
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\EmployeeManagement.StaticWebAssets.xml
@@ -81,7 +82,6 @@ D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\ja\Microso
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.resources.dll
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.resources.dll
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.resources.dll
-D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.resources.dll
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.resources.dll
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.resources.dll
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.resources.dll
@@ -132,6 +132,7 @@ D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\runtimes\w
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.csproj.AssemblyReference.cache
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.GeneratedMSBuildEditorConfig.editorconfig
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.AssemblyInfoInputs.cache
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.AssemblyInfo.cs
@@ -142,7 +143,6 @@ D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeMa
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.RazorAssemblyInfo.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\staticwebassets\EmployeeManagement.StaticWebAssets.Manifest.cache
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\staticwebassets\EmployeeManagement.StaticWebAssets.xml
-D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\scopedcss\bundle\EmployeeManagement.styles.css
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.TagHelpers.input.cache
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.TagHelpers.output.cache
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.RazorCoreGenerate.cache
@@ -165,14 +165,26 @@ D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\View
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Index.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Investment\Create.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Investment\Delete.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Investment\Details.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Investment\Edit.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Investment\Index.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Leave\Create.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Leave\Index.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Leave\LeaveApprove.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Leave\LeaveApproveIndex.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Role\AssignRole.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Role\Create.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Role\Delete.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Role\Details.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Role\Edit.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Role\Index.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\SalaryStructure\Create.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\SalaryStructure\Delete.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\SalaryStructure\Details.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\SalaryStructure\Edit.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\SalaryStructure\Index.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Salary\Create.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Salary\Index.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
@@ -188,4 +200,4 @@ D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeMa
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.dll
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.pdb
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.genruntimeconfig.cache
-D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.csproj.AssemblyReference.cache
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\scopedcss\bundle\EmployeeManagement.styles.css

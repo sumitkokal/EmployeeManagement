@@ -1,0 +1,113 @@
+﻿@model EmployeeManagement.Models.LeaveApproveModel
+
+@{
+    ViewData["Title"] = "LeaveApprove";
+}
+<form asp-action="LeaveApprove">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-6"><h4>Approve Leave</h4></div>
+                    <div class="col-sm-6">
+                        <p class="pb-0 mb-0 text-right">
+                            <a asp-action="Index">X</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <dl class="row">
+                            <dt class="col-sm-4">
+                                @Html.DisplayNameFor(model => model.EmployeeName)
+                            </dt>
+                            <dd class="col-sm-8">
+                                @Html.DisplayFor(model => model.EmployeeName)
+                            </dd>
+                            <dt class="col-sm-4">
+                                @Html.DisplayNameFor(model => model.LeaveDateFrom)
+                            </dt>
+                            <dd class="col-sm-8">
+                                @Html.DisplayFor(model => model.LeaveDateFrom)
+                            </dd>
+                            <dt class="col-sm-4">
+                                @Html.DisplayNameFor(model => model.LeaveDateTo)
+                            </dt>
+                            <dd class="col-sm-8">
+                                @Html.DisplayFor(model => model.LeaveDateTo)
+                            </dd>
+                        </dl>
+
+
+
+                        @*<div class="form-group">
+                                <label asp-for="EmployeeId" class="control-label"></label>
+                                <label asp-for="EmployeeId" class="control-label"></label>
+                                <input asp-for="EmployeeId" class="form-control" />
+                                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                            </div>*@
+                        @*<div class="form-group">
+                                <label asp-for="EmployeeName" class="control-label"></label>
+                                <input asp-for="EmployeeName" class="form-control" />
+                                <span asp-validation-for="EmployeeName" class="text-danger"></span>
+                            </div>*@
+                        @*<input type="hidden" asp-for="LeaveId" />
+                            <div class="form-group">
+                                <label asp-for="LeaveType" class="control-label"></label>
+                                <input asp-for="LeaveType" class="form-control" />
+                                <span asp-validation-for="LeaveType" class="text-danger"></span>
+                            </div>*@
+                        @*<div class="form-group">
+                                <label asp-for="LeaveDateFrom" class="control-label"></label>
+                                <input asp-for="LeaveDateFrom" class="form-control" />
+                                <span asp-validation-for="LeaveDateFrom" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="LeaveDateTo" class="control-label"></label>
+                                <input asp-for="LeaveDateTo" class="form-control" />
+                                <span asp-validation-for="LeaveDateTo" class="text-danger"></span>
+                            </div>*@
+                        @*<div class="form-group">
+                                <label asp-for="LeaveApprovedDate" class="control-label"></label>
+                                <input asp-for="LeaveApprovedDate" class="form-control" />
+                                <span asp-validation-for="LeaveApprovedDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Status" class="control-label"></label>
+                                <input asp-for="Status" class="form-control" />
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>*@
+
+
+                    </div>
+                    <div class="col-sm-4">
+                        @*<div class="form-group">
+                            <label asp-for="LeaveApprovedDate" class="control-label"></label>
+                            <input autocomplete="off" placeholder="Select DateOfBirth" asp-format="{0:yyyy-MM-ddTHH:mm}" asp-for="LeaveApprovedDate" class="datepicker form-control" />
+
+                            <span asp-validation-for="LeaveApprovedDate" class="text-danger"></span>
+                        </div>*@
+                        <div class="form-group">
+                            <label asp-for="ApproveRemark" class="control-label"></label>
+                            <textarea asp-for="ApproveRemark" class="form-control"></textarea>
+                            <span asp-validation-for="ApproveRemark" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

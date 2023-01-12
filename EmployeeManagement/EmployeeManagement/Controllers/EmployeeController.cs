@@ -132,8 +132,8 @@ namespace EmployeeManagement.Controllers
                 WeeklyOffList weeklyOffs = new WeeklyOffList();
                 ViewBag.QualificationList = QualificationList.qualifications;
                 ViewBag.WeeklyoffList = WeeklyOffList.weeklyoffs;
-                ViewBag.ManagerList = HttpContext.Session.GetCLRObject<List<SelectListItem>>("ManagerList");
-                ViewBag.RoleList = HttpContext.Session.GetCLRObject<List<SelectListItem>>("RoleList");
+                ViewBag.ManagerList = HttpContext.Session.GetSessionObject<List<SelectListItem>>("ManagerList");
+                ViewBag.RoleList = HttpContext.Session.GetSessionObject<List<SelectListItem>>("RoleList");
                 if (ModelState.IsValid)
                 {
                     _context.Add(employeeModel);

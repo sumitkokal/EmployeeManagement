@@ -1,0 +1,63 @@
+﻿@model EmployeeManagement.Models.InvestmentModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-6"><h4>Investment Details</h4></div>
+                <div class="col-sm-6">
+                    <p class="pb-0 mb-0 text-right">
+                        <a asp-action="Edit" asp-route-id="@Model.InvestmentId">Edit</a> |   <a asp-action="Index">X</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeId)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EmployeeId)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.InvestmentType)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.InvestmentType)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.InvestmentName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.InvestmentName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Amount)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Amount)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.StartDate)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EndDate)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+ 

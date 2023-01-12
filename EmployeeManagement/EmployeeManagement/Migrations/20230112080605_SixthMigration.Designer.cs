@@ -4,14 +4,16 @@ using EmployeeManagement.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeManagement.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    partial class EmployeeContextModelSnapshot : ModelSnapshot
+    [Migration("20230112080605_SixthMigration")]
+    partial class SixthMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,14 +155,8 @@ namespace EmployeeManagement.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ApproveRemark")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LeaveApprovedDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("LeaveDateFrom")
                         .HasColumnType("datetime2");
@@ -171,15 +167,51 @@ namespace EmployeeManagement.Migrations
                     b.Property<string>("LeaveType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Remark")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Status")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Remark")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("LeaveId");
 
                     b.ToTable("LeaveMaster");
+                });
+
+            modelBuilder.Entity("EmployeeManagement.Models.SalaryModel", b =>
+                {
+                    b.Property<int>("SalaryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BasicPay")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DA")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HRA")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OverTime")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SalaryStructureId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TA")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WeekendWorked")
+                        .HasColumnType("int");
+
+                    b.HasKey("SalaryId");
+
+                    b.ToTable("SalaryMaster");
                 });
 
             modelBuilder.Entity("EmployeeManagement.Models.SalaryStructureModel", b =>
@@ -198,13 +230,22 @@ namespace EmployeeManagement.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("GrossAnnualSalary")
+                        .HasColumnType("int");
+
                     b.Property<int>("GrossSalary")
                         .HasColumnType("int");
 
                     b.Property<int>("HRA")
                         .HasColumnType("int");
 
+                    b.Property<int>("OverTime")
+                        .HasColumnType("int");
+
                     b.Property<int>("TA")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WeekendWorked")
                         .HasColumnType("int");
 
                     b.HasKey("SalaryStructureId");

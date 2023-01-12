@@ -5,31 +5,32 @@
 }
 
 <div class="container-fluid">
-    <form asp-action="Create">
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4>Create Salary Process</h4>
-                    </div>
-                    <div class="col-sm-6 pt-1 text-right"><a class="text-right text-dark" asp-action="Index">X</a></div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>Create Salary Process</h4>
                 </div>
+                <div class="col-sm-6 pt-1 text-right"><a class="text-right text-dark" asp-action="Index">X</a></div>
             </div>
-            <div class="card-body">
+        </div>
+        <div class="card-body">
+            <form asp-action="GetSalaryStrucId">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label asp-for="EmployeeId" class="control-label"></label>
-                            <select class="form-control" asp-for="@Model.EmployeeId"
-                                    asp-items="@ViewBag.EmployeeList"></select>
+                            <label class="control-label">Employee</label>
+                            <select id="testSelect" class="form-control" asp-for="@Model.SalaryStructureId"
+                                    asp-items="@ViewBag.SalaryStructureList"></select>
                         </div>
                     </div>
                     <div class="col-sm-4 paddingt">
-                        <a href='@Url.Action("Test", "Salary" )'>
-                            <input class="btn btn-primary" type="button" value="Get">
-                        </a>
+                        <input type="submit" value="Get Details" class="btn btn-primary" />
                     </div>
                 </div>
+            </form>
+            <form asp-action="Create">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
@@ -61,22 +62,37 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label asp-for="OverTime" class="control-label"></label>
-                            <input autocomplete="off" placeholder="OverTime" asp-for="OverTime" class="form-control" />
+                            <label asp-for="OverTime" class="control-label"></label> (Per hour 200/-)
+                            <input autocomplete="off" placeholder="Over Time" asp-for="OverTime" class="form-control" />
                             <span asp-validation-for="OverTime" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label asp-for="WeekendWorked" class="control-label"></label>
+                            <label asp-for="WeekendWorked" class="control-label"></label> (Per hour 300/-)
                             <input autocomplete="off" placeholder="Weekend Worked" asp-for="WeekendWorked" class="form-control" />
                             <span asp-validation-for="WeekendWorked" class="text-danger"></span>
                         </div>
                     </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label asp-for="LeavesTaken" class="control-label"></label>
+                            <input autocomplete="off" placeholder="Leaves Taken" asp-for="LeavesTaken" class="form-control" />
+                            <span asp-validation-for="LeavesTaken" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label asp-for="GrossSalary" class="control-label"></label>
+                            <input autocomplete="off" placeholder="Gross Salary" asp-for="GrossSalary" class="form-control" />
+                            <span asp-validation-for="GrossSalary" class="text-danger"></span>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
+
 </div>
 
 <style>

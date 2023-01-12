@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using EmployeeManagement.CustomSessions;
 using System.Collections.Generic;
 using EmployeeManagement.Models;
+using System;
 
 namespace EmployeeManagement.Controllers
 {
@@ -26,38 +27,52 @@ namespace EmployeeManagement.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var empList = await _employeeContext.employees.ToListAsync();
+            //var empList = await _employeeContext.employees.ToListAsync();
+            //var EmpSelect = new List<SelectListItem>();
+            //foreach (var item in empList)
+            //{
+            //    EmpSelect.Add(new SelectListItem(item.FirstName + " " + item.LastName, item.EmployeeId.ToString()));
+            //}
+            //ViewBag.RoleList = null;
+            //HttpContext.Session.SetSessionObject<List<SelectListItem>>("EmployeeList", EmpSelect);
+
+            var SStructureList = await _employeeContext.salaryStructures.ToListAsync();
             var EmpSelect = new List<SelectListItem>();
-            foreach (var item in empList)
+            foreach (var item in SStructureList)
             {
-                EmpSelect.Add(new SelectListItem(item.FirstName + " " + item.LastName, item.EmployeeId.ToString()));
+                var empData = await _employeeContext.employees.FirstOrDefaultAsync(m => m.EmployeeId == item.EmployeeId);
+                EmpSelect.Add(new SelectListItem(empData.FirstName + " " + empData.LastName, item.SalaryStructureId.ToString()));
             }
-            ViewBag.RoleList = null;
-            HttpContext.Session.SetSessionObject<List<SelectListItem>>("EmployeeList", EmpSelect);
-            ViewBag.EmployeeList = EmpSelect;
+            ViewBag.SalaryStructureList = null;
+            HttpContext.Session.SetSessionObject<List<SelectListItem>>("SalaryStructureList", EmpSelect);
+            ViewBag.SalaryStructureList = EmpSelect;
 
 
             return View();
         }
 
-        public IActionResult Test(int EmployeeId)
+        [HttpPost]
+        public IActionResult GetSalaryStrucId(SalaryModel salaryStruct)
         {
-            SalaryModel salary = new SalaryModel()
-            {
-                BasicPay = 1000,
-                HRA = 100,
-                TA = 200,
-                OverTime = 500
-            };
-            ViewBag.EmployeeList = HttpContext.Session.GetCLRObject<List<SelectListItem>>("EmployeeList");
-            ////ViewBag.Profile_Id = new SelectList(data, "Id", "Name", salary.EmployeeId);
-            //var EmpSelect = new List<SelectListItem>();
-            //var t = ViewBag.EmployeeList;
-            ////  var text = data.Where(x => x.Selected).FirstOrDefault().Value;
+            ViewBag.SalaryStructureList = HttpContext.Session.GetSessionObject<List<SelectListItem>>("SalaryStructureList");
+            var getSalStructure = _employeeContext.salaryStructures.ToList().Where(c => c.SalaryStructureId == salaryStruct.SalaryStructureId).ToList()[0];
 
+            salaryStruct.BasicPay = getSalStructure.BasicPay;
+            salaryStruct.DA = getSalStructure.DA;
+            salaryStruct.TA = getSalStructure.TA;
+            salaryStruct.HRA = getSalStructure.HRA;
 
-            //var emp = salary.EmployeeId;
-            return View("Create", salary);
+            var getLeavesCount = _employeeContext.leaves.ToList().Where(c => c.EmployeeId == getSalStructure.EmployeeId).Count();
+
+            salaryStruct.LeavesTaken = getLeavesCount * Convert.ToInt32(LeaveCalculation.LeaveTakenCost);
+            salaryStruct.OverTime = 0;
+            salaryStruct.WeekendWorked = 0;
+
+            salaryStruct.GrossSalary = salaryStruct.BasicPay + salaryStruct.DA + salaryStruct.TA + salaryStruct.HRA + salaryStruct.LeavesTaken;
+
+            //ViewBag.EmployeeList = HttpContext.Session.GetSessionObject<List<SelectListItem>>("EmployeeList");
+
+            return View("Create", salaryStruct);
         }
     }
 }

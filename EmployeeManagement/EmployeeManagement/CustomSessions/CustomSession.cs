@@ -15,7 +15,7 @@ namespace EmployeeManagement.CustomSessions
             session.SetString(key, data);
         }
 
-        public static T GetCLRObject<T>(this ISession session, string key)
+        public static T GetSessionObject<T>(this ISession session, string key)
         {
             var stringData = session.GetString(key);
             if (stringData != null)
