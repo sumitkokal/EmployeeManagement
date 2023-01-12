@@ -103,13 +103,12 @@ namespace EmployeeManagement.Areas.Identity.Pages.Account
                     await _context.SaveChangesAsync();
                     _logger.LogInformation("User created a new account with password.");
 
-                    var insertedNewEmp = (await _context.employees.ToListAsync())
-                        .Where(c => c.EmailId == employeeModel.EmailId && c.MobileNo == employeeModel.MobileNo).ToList()[0];
+                    var insertedNewEmp = (await _context.employees.ToListAsync()).Where(c => c.EmailId == Input.Email && c.MobileNo == Input.MobileNo).ToList()[0];
 
                     // EmployeeModel emp = new EmployeeModel();
                     employeeModel.EmployeeCode = "NE00" + insertedNewEmp.EmployeeId.ToString();
                     employeeModel.EmployeeId = Convert.ToInt32(insertedNewEmp.EmployeeId);
-                    _context.Update(employeeModel);
+                    _context.employees.Update(employeeModel);
                     await _context.SaveChangesAsync();
 
 

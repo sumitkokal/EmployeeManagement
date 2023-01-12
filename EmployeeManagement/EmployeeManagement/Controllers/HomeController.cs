@@ -35,13 +35,17 @@ namespace EmployeeManagement.Controllers
             {
                 if (User.Identity.Name != "admin@nitor.com")
                 {
-                    // var findEmp = (await _context.employees.ToListAsync()).Where(c => c.EmailId == User.Identity.Name).ToList()[0];
                     var findEmp = (await _signInManager.UserManager.Users.ToListAsync()).Find(c => c.Email == User.Identity.Name);
                     var fetchUser = _userManager.Users.Where(u => u.Email == findEmp.Email).FirstOrDefault();
                     var checkRoleIsAssigned = await _userManager.GetRolesAsync(fetchUser);
                     if (checkRoleIsAssigned.Count > 0)
                     {
                         var loggedInEmp = (await _context.employees.ToListAsync()).Where(c => c.EmailId == findEmp.Email).ToList()[0];
+                        var leaves = (await _context.leaves.ToListAsync()).Where(c => c.EmployeeId == loggedInEmp.EmployeeId).ToList();
+                        var inv = (await _context.investments.ToListAsync()).ToList().FindAll(c => c.EmployeeId == loggedInEmp.EmployeeId).Count();
+                        ViewBag.InvestmentCount = inv;
+                        ViewBag.CasualCount = leaves.FindAll(c => c.LeaveType == "Casual").Count();
+                        ViewBag.MedicalCount = leaves.FindAll(c => c.LeaveType == "Medical").Count();
                         HttpContext.Session.SetSessionObject<EmployeeModel>("loginUser", loggedInEmp);
                         return View();
                     }

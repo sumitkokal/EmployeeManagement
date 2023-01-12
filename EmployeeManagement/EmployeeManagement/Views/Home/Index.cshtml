@@ -1,5 +1,47 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
  
+<div class="container-fluid">
+         <div class="card-body">
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="border py-4 px-3">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4>@ViewBag.CasualCount</h4>
+                            </div>
+                            <div class="col-sm-12">
+                                Casual Leaves
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="border py-4 px-3">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4> @ViewBag.MedicalCount</h4>
+                            </div>
+                            <div class="col-sm-12">
+                                Medical Leaves
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="border py-4 px-3">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4>@ViewBag.InvestmentCount</h4>
+                            </div>
+                            <div class="col-sm-12">
+                                Investments
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ </div>

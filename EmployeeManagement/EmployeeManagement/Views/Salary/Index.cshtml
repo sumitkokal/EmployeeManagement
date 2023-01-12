@@ -12,7 +12,14 @@
                 <div class="col-sm-6">
                     <h4>Salary</h4>
                 </div>
-                @*<div class="col-sm-6 text-right"><a asp-action="Create">Create New</a></div>*@
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Accountant"))
+                    {
+                        <div class="col-sm-6 text-right"><a asp-action="Create">Create New</a></div>
+                    }
+                }
+
             </div>
         </div>
         <div class="card-body">

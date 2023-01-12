@@ -27,15 +27,6 @@ namespace EmployeeManagement.Controllers
 
         public async Task<IActionResult> Create()
         {
-            //var empList = await _employeeContext.employees.ToListAsync();
-            //var EmpSelect = new List<SelectListItem>();
-            //foreach (var item in empList)
-            //{
-            //    EmpSelect.Add(new SelectListItem(item.FirstName + " " + item.LastName, item.EmployeeId.ToString()));
-            //}
-            //ViewBag.RoleList = null;
-            //HttpContext.Session.SetSessionObject<List<SelectListItem>>("EmployeeList", EmpSelect);
-
             var SStructureList = await _employeeContext.salaryStructures.ToListAsync();
             var EmpSelect = new List<SelectListItem>();
             foreach (var item in SStructureList)
@@ -46,8 +37,18 @@ namespace EmployeeManagement.Controllers
             ViewBag.SalaryStructureList = null;
             HttpContext.Session.SetSessionObject<List<SelectListItem>>("SalaryStructureList", EmpSelect);
             ViewBag.SalaryStructureList = EmpSelect;
+            return View();
+        }
 
-
+        [HttpPost]
+        public async Task<IActionResult> Create(SalaryModel salaryModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _employeeContext.Add(salaryModel);
+                await _employeeContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
             return View();
         }
 
