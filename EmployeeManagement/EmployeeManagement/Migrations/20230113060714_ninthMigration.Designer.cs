@@ -4,14 +4,16 @@ using EmployeeManagement.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeManagement.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    partial class EmployeeContextModelSnapshot : ModelSnapshot
+    [Migration("20230113060714_ninthMigration")]
+    partial class ninthMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -182,63 +184,6 @@ namespace EmployeeManagement.Migrations
                     b.ToTable("LeaveMaster");
                 });
 
-            modelBuilder.Entity("EmployeeManagement.Models.SalaryModel", b =>
-                {
-                    b.Property<int>("SalaryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BasicPay")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DA")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GrossSalary")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HRA")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LeavesTaken")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Month")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OverTime")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SalaryStructureId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TA")
-                        .HasColumnType("int");
-
-                    b.Property<double>("TDS")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Total")
-                        .HasColumnType("float");
-
-                    b.Property<int>("WeekendWorked")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Year")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SalaryId");
-
-                    b.ToTable("SalaryMaster");
-                });
-
             modelBuilder.Entity("EmployeeManagement.Models.SalaryStructureModel", b =>
                 {
                     b.Property<int>("SalaryStructureId")
@@ -260,9 +205,6 @@ namespace EmployeeManagement.Migrations
 
                     b.Property<int>("HRA")
                         .HasColumnType("int");
-
-                    b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TA")
                         .HasColumnType("int");

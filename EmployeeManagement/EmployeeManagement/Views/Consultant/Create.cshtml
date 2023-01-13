@@ -4,48 +4,61 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>ConsultantModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="ConsultantId" class="control-label"></label>
-                <input asp-for="ConsultantId" class="form-control" />
-                <span asp-validation-for="ConsultantId" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="ConsultantName" class="control-label"></label>
-                <input asp-for="ConsultantName" class="form-control" />
-                <span asp-validation-for="ConsultantName" class="text-danger"></span>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>Create</h4>
+                </div>
+                <div class="col-sm-6">
+                    <p class="pb-0 mb-0 text-right">
+                        <a asp-action="Index">X</a>
+                    </p>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <input asp-for="Type" class="form-control" />
-                <span asp-validation-for="Type" class="text-danger"></span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        @*<div class="form-group">
+                        <label asp-for="ConsultantId" class="control-label"></label>
+                        <input asp-for="ConsultantId" class="form-control" />
+                        <span asp-validation-for="ConsultantId" class="text-danger"></span>
+                    </div>*@
+                        <div class="form-group">
+                            <label asp-for="ConsultantName" class="control-label"></label>
+                            <input asp-for="ConsultantName" class="form-control" />
+                            <span asp-validation-for="ConsultantName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Type" class="control-label"></label>
+                            <input asp-for="Type" class="form-control" />
+                            <span asp-validation-for="Type" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EmailId" class="control-label"></label>
+                            <input asp-for="EmailId" class="form-control" />
+                            <span asp-validation-for="EmailId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MobileNo" class="control-label"></label>
+                            <input asp-for="MobileNo" class="form-control" />
+                            <span asp-validation-for="MobileNo" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>For Consultant Fixed Pay for 10 Days ie(55000/-)</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="EmailId" class="control-label"></label>
-                <input asp-for="EmailId" class="form-control" />
-                <span asp-validation-for="EmailId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MobileNo" class="control-label"></label>
-                <input asp-for="MobileNo" class="form-control" />
-                <span asp-validation-for="MobileNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

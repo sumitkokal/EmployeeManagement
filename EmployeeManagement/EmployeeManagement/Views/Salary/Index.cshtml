@@ -1,9 +1,9 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<EmployeeManagement.Models.SalaryModel>
+
 @{
     ViewData["Title"] = "Index";
 }
+
 
 <div class="container-fluid">
     <div class="card">
@@ -24,6 +24,104 @@
         </div>
         <div class="card-body">
 
+            <table class="table">
+                <thead>
+                    <tr>
+                        @*<th>
+                        @Html.DisplayNameFor(model => model.Role)
+                    </th>*@
+                        @*<th>
+                        @Html.DisplayNameFor(model => model.SalaryStructureId)
+                    </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.EmployeeId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BasicPay)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HRA)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TA)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DA)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.OverTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LeavesTaken)
+                        </th>*@
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.WeekendWorked)
+                        </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.GrossSalary)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TDS)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Total)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @*<td>
+                            @Html.DisplayFor(modelItem => item.Role)
+                        </td>*@
+                            @*<td>
+                            @Html.DisplayFor(modelItem => item.SalaryStructureId)
+                        </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmployeeId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BasicPay)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HRA)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TA)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DA)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.OverTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LeavesTaken)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.WeekendWorked)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GrossSalary)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TDS)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Total)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.SalaryId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.SalaryId">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.SalaryId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
+ 

@@ -64,10 +64,11 @@ namespace EmployeeManagement.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SalaryStructureId,EmployeeId,BasicPay,HRA,TA,DA,OverTime,WeekendWorked,GrossSalary,GrossAnnualSalary")] SalaryStructureModel salaryStructureModel)
+        public async Task<IActionResult> Create([Bind("SalaryStructureId,EmployeeId,BasicPay,HRA,TA,DA,OverTime,WeekendWorked,GrossSalary,Role")] SalaryStructureModel salaryStructureModel)
         {
             if (ModelState.IsValid)
             {
+                salaryStructureModel.Role = "Staff";
                 salaryStructureModel.GrossSalary = salaryStructureModel.BasicPay + salaryStructureModel.DA + salaryStructureModel.HRA + salaryStructureModel.TA;
                 _context.Add(salaryStructureModel);
                 await _context.SaveChangesAsync();

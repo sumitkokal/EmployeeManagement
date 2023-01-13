@@ -18,7 +18,7 @@ namespace EmployeeManagement.Context
         public DbSet<LeaveModel> leaves { get; set; }
         public DbSet<InvestmentModel> investments { get; set; }
         public DbSet<SalaryStructureModel> salaryStructures { get; set; }
-      //  public DbSet<SalaryModel> salaries { get; set; }
+        public DbSet<SalaryModel> salaries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,15 +39,11 @@ namespace EmployeeManagement.Context
                 entity.HasKey(x => x.SalaryStructureId);
 
             });
-            //modelBuilder.Entity<SalaryModel>(entity =>
-            //{
-            //    entity.HasKey(x => x.SalaryId);
-
-            //});
+            modelBuilder.Entity<SalaryModel>(entity =>
+            {
+                entity.HasKey(x => x.SalaryId);
+            });
             base.OnModelCreating(modelBuilder);
-        }
-      //  public DbSet<SalaryModel> salaries { get; set; }
-
-      //  public DbSet<EmployeeManagement.Models.LeaveApproveModel> LeaveApproveModel { get; set; }
-    }
+        } 
+     }
 }

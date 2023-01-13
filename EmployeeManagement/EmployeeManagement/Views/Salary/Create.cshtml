@@ -30,66 +30,102 @@
                     </div>
                 </div>
             </form>
-            <form asp-action="Create">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label asp-for="BasicPay" class="control-label"></label>
-                            <input autocomplete="off" placeholder="Basic Pay" asp-for="BasicPay" class="form-control" />
-                            <span asp-validation-for="BasicPay" class="text-danger"></span>
+            @if (@ViewBag.ShowData==true)
+            {
+                <form asp-action="Create">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label">Year</label>
+                                <input autocomplete="off" placeholder="Enter Year" asp-for="Year" class="form-control" />
+                                <span asp-validation-for="Year" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label">Month</label>
+                                <select id="testSelect" class="form-control" asp-for="@Model.Month"
+                                        asp-items="@ViewBag.MonthList"></select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="BasicPay" class="control-label"></label>
+                                <input autocomplete="off" placeholder="Basic Pay" asp-for="BasicPay" class="form-control" />
+                                <span asp-validation-for="BasicPay" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="HRA" class="control-label"></label>
+                                <input autocomplete="off" placeholder="HRA" asp-for="HRA" class="form-control" />
+                                <span asp-validation-for="HRA" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="TA" class="control-label"></label>
+                                <input autocomplete="off" placeholder="TA" asp-for="TA" class="form-control" />
+                                <span asp-validation-for="TA" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="DA" class="control-label"></label>
+                                <input autocomplete="off" placeholder="DA" asp-for="DA" class="form-control" />
+                                <span asp-validation-for="DA" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="OverTime" class="control-label"></label> (Per hour 200/-)
+                                <input autocomplete="off" placeholder="Over Time" asp-for="OverTime" class="form-control" />
+                                <span asp-validation-for="OverTime" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="WeekendWorked" class="control-label"></label> (Per hour 300/-)
+                                <input autocomplete="off" placeholder="Weekend Worked" asp-for="WeekendWorked" class="form-control" />
+                                <span asp-validation-for="WeekendWorked" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="LeavesTaken" class="control-label"></label>
+                                <input autocomplete="off" placeholder="Leaves Taken" asp-for="LeavesTaken" class="form-control" />
+                                <span asp-validation-for="LeavesTaken" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="GrossSalary" class="control-label"></label>
+                                <input autocomplete="off" placeholder="Gross Salary" asp-for="GrossSalary" class="form-control" />
+                                <span asp-validation-for="GrossSalary" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="TDS" class="control-label"></label>
+                                <input autocomplete="off" placeholder="TDS Deduction" asp-for="TDS" class="form-control" />
+                                <span asp-validation-for="TDS" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="Total" class="control-label"></label>
+                                <input autocomplete="off" placeholder="Gross Salary" asp-for="Total" class="form-control" />
+                                <span asp-validation-for="Total" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 paddingt">
+                            <div class="form-group">
+                                <input type="submit" value="Generate Salary" class="btn btn-primary" />
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label asp-for="HRA" class="control-label"></label>
-                            <input autocomplete="off" placeholder="HRA" asp-for="HRA" class="form-control" />
-                            <span asp-validation-for="HRA" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label asp-for="TA" class="control-label"></label>
-                            <input autocomplete="off" placeholder="TA" asp-for="TA" class="form-control" />
-                            <span asp-validation-for="TA" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label asp-for="DA" class="control-label"></label>
-                            <input autocomplete="off" placeholder="DA" asp-for="DA" class="form-control" />
-                            <span asp-validation-for="DA" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label asp-for="OverTime" class="control-label"></label> (Per hour 200/-)
-                            <input autocomplete="off" placeholder="Over Time" asp-for="OverTime" class="form-control" />
-                            <span asp-validation-for="OverTime" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label asp-for="WeekendWorked" class="control-label"></label> (Per hour 300/-)
-                            <input autocomplete="off" placeholder="Weekend Worked" asp-for="WeekendWorked" class="form-control" />
-                            <span asp-validation-for="WeekendWorked" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label asp-for="LeavesTaken" class="control-label"></label>
-                            <input autocomplete="off" placeholder="Leaves Taken" asp-for="LeavesTaken" class="form-control" />
-                            <span asp-validation-for="LeavesTaken" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label asp-for="GrossSalary" class="control-label"></label>
-                            <input autocomplete="off" placeholder="Gross Salary" asp-for="GrossSalary" class="form-control" />
-                            <span asp-validation-for="GrossSalary" class="text-danger"></span>
-                        </div>
-                    </div>
-                </div>
-            </form>
+                </form>
+            }
         </div>
     </div>
 

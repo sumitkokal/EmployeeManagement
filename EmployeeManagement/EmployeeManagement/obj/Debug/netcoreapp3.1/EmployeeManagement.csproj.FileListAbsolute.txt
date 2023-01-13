@@ -186,7 +186,6 @@ D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\View
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\SalaryStructure\Edit.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\SalaryStructure\Index.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Salary\Create.cshtml.g.cs
-D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Salary\Index.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
@@ -200,4 +199,5 @@ D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeMa
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.dll
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.pdb
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.genruntimeconfig.cache
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Salary\Index.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\scopedcss\bundle\EmployeeManagement.styles.css

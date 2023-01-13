@@ -30,8 +30,15 @@ namespace EmployeeManagement.Controllers
                 if (User.Identity.Name != "admin@nitor.com")
                 {
                     var loggedInUser = HttpContext.Session.GetSessionObject<EmployeeModel>("loginUser");
-                    var investmentsByEmp = (await _context.investments.ToArrayAsync()).Where(c => c.EmployeeId == loggedInUser.EmployeeId).ToList();
-                    return View(investmentsByEmp);
+                    if (loggedInUser != null)
+                    {
+                        var investmentsByEmp = (await _context.investments.ToArrayAsync()).Where(c => c.EmployeeId == loggedInUser.EmployeeId).ToList();
+                        return View(investmentsByEmp);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {

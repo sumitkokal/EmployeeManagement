@@ -9,13 +9,19 @@ namespace EmployeeManagement.Models
         [Key]
         public int SalaryId { get; set; }
         [ForeignKey("EmployeeId")]
+        public string Role { get; set; }
         public int SalaryStructureId { get; set; }
         public int EmployeeId { get; set; }
+        public string Month { get; set; }
+        public string Year { get; set; }
         public int BasicPay { get; set; }
+        [Display(Name = "House Rent Allowance")]
         public int HRA { get; set; }
+        [Display(Name = "Travelling Allowance")]
         public int TA { get; set; }
+        [Display(Name = "Dearness Allowance")]
         public int DA { get; set; }
-        
+
         [Display(Name = "Over Time")]
         public int OverTime { get; set; }
 
@@ -27,6 +33,8 @@ namespace EmployeeManagement.Models
 
         [Display(Name = "Gross Salary")]
         public int GrossSalary { get; set; }
+        public double TDS { get; set; }
+        public double Total { get; set; }
         //  public int GrossAnnualSalary { get; set; }
     }
 
@@ -36,12 +44,16 @@ namespace EmployeeManagement.Models
         //SalaryStructure
         [Key]
         public int SalaryStructureId { get; set; }
-
-        [ForeignKey("EmployeeId")]
+        public string Role { get; set; }
+       // [ForeignKey("EmployeeId")]
         public int EmployeeId { get; set; }
+        [Display(Name = "Basic Pay")]
         public int BasicPay { get; set; }
+        [Display(Name = "House Rent Allowance")]
         public int HRA { get; set; }
+        [Display(Name = "Travelling Allowance")]
         public int TA { get; set; }
+        [Display(Name = "Dearness Allowance")]
         public int DA { get; set; }
         //public int OverTime { get; set; }
         //public int WeekendWorked { get; set; }

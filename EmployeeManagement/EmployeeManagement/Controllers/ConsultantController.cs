@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmpManagement.Models;
 using EmployeeManagement.Context;
+using EmployeeManagement.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace EmployeeManagement.Controllers
 {
     public class ConsultantController : Controller
     {
         private readonly EmployeeContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public ConsultantController(EmployeeContext context)
+        public ConsultantController(EmployeeContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Consultant
@@ -60,6 +64,22 @@ namespace EmployeeManagement.Controllers
             {
                 _context.Add(consultantModel);
                 await _context.SaveChangesAsync();
+
+                var user = new IdentityUser { UserName = consultantModel.EmailId, Email = consultantModel.EmailId };
+                var result = await _userManager.CreateAsync(user, "Welcome@123");
+
+                var consultant = await _context.consultants.FirstOrDefaultAsync(m => m.EmailId == consultantModel.EmailId && m.MobileNo == consultantModel.MobileNo);
+                SalaryStructureModel salaryStructureModel = new SalaryStructureModel()
+                {
+                    BasicPay = 55000,
+                    GrossSalary = 550000,
+                    Role = "Consultant",
+                    EmployeeId= consultant.ConsultantId
+
+                };
+                _context.salaryStructures.Add(salaryStructureModel);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(consultantModel);
