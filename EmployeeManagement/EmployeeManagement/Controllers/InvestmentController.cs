@@ -42,7 +42,9 @@ namespace EmployeeManagement.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home");
+                    var investmentsByEmp = (await _context.investments.ToArrayAsync()).ToList();
+                    return View(investmentsByEmp);
+                    //return RedirectToAction("Index", "Home");
                 }
             }
             else

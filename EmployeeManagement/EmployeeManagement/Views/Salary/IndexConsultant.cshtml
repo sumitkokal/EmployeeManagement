@@ -1,22 +1,21 @@
 ﻿@model IEnumerable<EmployeeManagement.Models.SalaryModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "IndexConsultant";
 }
-
 
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-6">
-                    <h4>Salary</h4>
+                    <h4>Salary (Consultant)</h4>
                 </div>
                 @if (User.Identity.IsAuthenticated)
                 {
                     if (User.IsInRole("Accountant"))
                     {
-                        <div class="col-sm-6 text-right"><a asp-action="Create">Create New</a></div>
+                        <div class="col-sm-6 text-right"><a asp-action="CreateConsultant">Create New</a></div>
                     }
                 }
 
@@ -29,12 +28,18 @@
                     <tr>
                         @*<th>
                         @Html.DisplayNameFor(model => model.Role)
-                    </th>*@
-                        @*<th>
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.SalaryStructureId)
                     </th>*@
                         <th>
                             @Html.DisplayNameFor(model => model.EmployeeId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Month)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Year)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.BasicPay)
@@ -49,14 +54,14 @@
                             @Html.DisplayNameFor(model => model.DA)
                         </th>
                         @*<th>
-                            @Html.DisplayNameFor(model => model.OverTime)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.LeavesTaken)
-                        </th>*@
-                        @*<th>
-                            @Html.DisplayNameFor(model => model.WeekendWorked)
-                        </th>*@
+                        @Html.DisplayNameFor(model => model.OverTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LeavesTaken)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.WeekendWorked)
+                    </th>*@
                         <th>
                             @Html.DisplayNameFor(model => model.GrossSalary)
                         </th>
@@ -75,12 +80,18 @@
                         <tr>
                             @*<td>
                             @Html.DisplayFor(modelItem => item.Role)
-                        </td>*@
-                            @*<td>
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.SalaryStructureId)
                         </td>*@
                             <td>
                                 @Html.DisplayFor(modelItem => item.EmployeeId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Month)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Year)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.BasicPay)
@@ -95,14 +106,14 @@
                                 @Html.DisplayFor(modelItem => item.DA)
                             </td>
                             @*<td>
-                                @Html.DisplayFor(modelItem => item.OverTime)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.LeavesTaken)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.WeekendWorked)
-                            </td>*@
+                            @Html.DisplayFor(modelItem => item.OverTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LeavesTaken)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WeekendWorked)
+                        </td>*@
                             <td>
                                 @Html.DisplayFor(modelItem => item.GrossSalary)
                             </td>
@@ -121,7 +132,9 @@
                     }
                 </tbody>
             </table>
+
         </div>
     </div>
 </div>
+
  

@@ -1,8 +1,9 @@
 ﻿@model EmployeeManagement.Models.SalaryModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "CreateConsultant";
 }
+
 
 <div class="container-fluid">
     <div class="card">
@@ -15,13 +16,13 @@
             </div>
         </div>
         <div class="card-body">
-            <form asp-action="GetSalaryStrucId">
+            <form asp-action="GetSalaryStrucIdForConsultant">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label">Employee</label>
                             <select id="testSelect" class="form-control" asp-for="@Model.SalaryStructureId"
-                                    asp-items="@ViewBag.SalaryStructureList"></select>
+                                    asp-items="@ViewBag.CSalaryStructureList"></select>
                         </div>
                     </div>
                     <div class="col-sm-4 paddingt">
@@ -29,9 +30,9 @@
                     </div>
                 </div>
             </form>
-            @if (@ViewBag.ShowData==true)
+            @if (@ViewBag.ShowData == true)
             {
-                <form asp-action="Create">
+                <form asp-action="CreateConsultant" asp-controller="Salary">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
@@ -128,6 +129,7 @@
         </div>
     </div>
 </div>
+ 
 
 <style>
     .paddingt {

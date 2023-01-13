@@ -132,7 +132,6 @@ D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\runtimes\w
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Proj\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.csproj.AssemblyReference.cache
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.GeneratedMSBuildEditorConfig.editorconfig
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.AssemblyInfoInputs.cache
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.AssemblyInfo.cs
@@ -201,3 +200,5 @@ D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeMa
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.genruntimeconfig.cache
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Salary\Index.cshtml.g.cs
 D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\scopedcss\bundle\EmployeeManagement.styles.css
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Salary\IndexConsultant.cshtml.g.cs
+D:\Proj\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Salary\CreateConsultant.cshtml.g.cs
